@@ -1,0 +1,6 @@
+groq
+pandas
+tqdm
+minisom
+plotly
+streamlit
