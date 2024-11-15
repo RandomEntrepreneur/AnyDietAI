@@ -3,7 +3,7 @@ import plotly.graph_objects as go
 from my_utilities import meal_description_to_list, find_healthy_closest,suggest_meals
 
 if not "fig" in st.session_state.keys():
-    st.switch_page("inicio.py")
+    st.switch_page("pages/inicio.py")
 nome = st.session_state["nome"]
 
 # Mapa de Alimentos
