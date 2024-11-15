@@ -9,7 +9,7 @@ nome = st.session_state["nome"]
 # Mapa de Alimentos
 st.title("Mapa de Alimentos")
 st.markdown("Explore sua lista de alimentos personalizada! Os alimentos estão organizados por cores para facilitar sua escolha: os alimentos em azul são os melhores para você, enquanto os em vermelho são aqueles que é melhor evitar. Use este mapa para fazer escolhas alinhadas às suas necessidades!")
-st.plotly_chart(st.session_state["fig"])
+st.plotly_chart(st.session_state["fig"], use_container_width=True)
 
 # Importância de Nutrientes
 st.title("Importância de Nutrientes")
@@ -22,8 +22,7 @@ fig = go.Figure()
 for category, value, color in zip(categories, values, colors):
     fig.add_trace(go.Bar(x=[category], y=[value], marker_color=color, name=category))
 fig.update_layout(title="Visualização da Importância de Nutrientes", xaxis_title="Nutrientes", yaxis_title="Importância", yaxis=dict(range=[0, 1]), showlegend=False, plot_bgcolor="white", margin=dict(l=40, r=40, t=40, b=40))
-
-st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
 
 # Recomendações Personalizadas
 st.title("Recomendações Personalizadas")
