@@ -24,7 +24,7 @@ euclidean_distance = lambda p1, p2: np.sqrt(np.sum((np.array(p1) - np.array(p2))
 message_parser = lambda role, text : {"role": role, "content": text}
 
 class MiniLMv2():
-    def __init__(self, api_key: str):
+    def __init__(self, api_key: str=""):
         self.api_key = api_key
 
     def embed(self, text: str, tries: int=5) -> np.ndarray:
@@ -39,7 +39,7 @@ class MiniLMv2():
         raise RuntimeError(f"API failed to respond after {tries} attempts.")
 
 class LLAMA():
-    def __init__(self, api_key: str, model: str="llama3-8b-8192"):
+    def __init__(self, api_key: str="", model: str="llama3-8b-8192"):
         self.api_key = api_key
         self.model = model
     
