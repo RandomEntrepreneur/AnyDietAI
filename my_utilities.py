@@ -169,13 +169,12 @@ def column_categorization_prompt(user_description: str, top_k=3) -> dict:
 
     return most_common_impacts
 
-def suggest_meals(user_prompt: str, meal_list: "list[str]", healthy_closest: "list[str]") -> str:
-    meal_text = ", ".join(meal_list)
+def suggest_meals(user_prompt: str, meal_description: str, healthy_closest: "list[str]") -> str:
     healthy_text = ", ".join(healthy_closest)
 
     prompts = [
         message_parser("system", f'Você é uma IA assistente de alimentação. Seu objetivo é tornar os usuários mais saudáveis de acordo com seus objetivos e restrições alimentares. O usuário que você vai ajudar tem a seguinte descrição: {user_prompt}'),
-        message_parser("user", f"O usuário gostaria de comer uma refeição contendo {meal_text}. No entanto, há uma série de alimentos que poderiam ser substituídos nesta refeição para melhorar sua alimentação, o que inclui {healthy_text}. Faça uma breve sugestão de refeições que o usuário poderia fazer com alguns destes alimentos. Não escolha opções muito diferentes das que o usuário escolheu ou ele pode não querer consumir. Você pode recomendar mais de uma alternativa. Ele pode ler esse texto, converse como se estivesse falando diretamente com ele, mas seja direto ao ponto. Você deve responder com até 50 palavras, em português.")
+        message_parser("user", f"O usuário gostaria de comer uma refeição contendo {meal_description}. No entanto, há uma série de alimentos que poderiam ser substituídos nesta refeição para melhorar sua alimentação, o que inclui {healthy_text}. Faça uma breve sugestão de refeições que o usuário poderia fazer com alguns destes alimentos. Não escolha opções muito diferentes das que o usuário escolheu ou ele pode não querer consumir. Você pode recomendar mais de uma alternativa. Ele pode ler esse texto, converse como se estivesse falando diretamente com ele, mas seja direto ao ponto. Você deve responder com até 50 palavras, em português.")
     ]
 
     resp = LLM.ask_messages(prompts, 1000).lower()

@@ -36,5 +36,5 @@ with st.form("Sugestão"):
             with st.spinner(f"Gerando recomendações para {nome}..."):
                 meal_list = meal_description_to_list(meal_description)
                 healthy_closest = find_healthy_closest(meal_list, st.session_state["som_data"])
-                suggestion = suggest_meals(st.session_state["description"], meal_list, healthy_closest)
+                suggestion = suggest_meals(st.session_state["description"], meal_description, healthy_closest)
                 st.success(suggestion)
